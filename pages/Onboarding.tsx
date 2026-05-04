@@ -156,7 +156,7 @@ export default function Onboarding() {
             </div>
 
             <div className="grid grid-cols-2 gap-3">
-              {interestOptions.slice(0, 4).map((interest) => {
+              {interestOptions.map((interest) => {
                 const isSelected = interests.includes(interest.id);
                 return (
                   <motion.button
@@ -183,6 +183,10 @@ export default function Onboarding() {
                           {interest.id === "vehicles" && "🚗"}
                           {interest.id === "water" && "🌊"}
                           {interest.id === "sports" && "⚽"}
+                          {interest.id === "outdoor" && "🌳"}
+                          {interest.id === "quiet" && "📖"}
+                          {interest.id === "stem" && "🔬"}
+                          {interest.id === "history" && "🏛️"}
                         </span>
                       )}
                     </div>

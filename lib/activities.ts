@@ -218,6 +218,8 @@ export const interestOptions = [
   { id: "sports", label: "Sports", icon: "Dumbbell", color: "#D4A843" },
   { id: "outdoor", label: "Outdoor", icon: "TreePine", color: "#5B9A5B" },
   { id: "quiet", label: "Quiet", icon: "BookOpen", color: "#8B7E74" },
+  { id: "stem", label: "STEM", icon: "FlaskConical", color: "#8B5CF6" },
+  { id: "history", label: "History", icon: "Landmark", color: "#B8860B" },
 ];
 
 export const durationLabels: Record<string, string> = {

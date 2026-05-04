@@ -4,12 +4,14 @@ import { User, Crown, Check, Sparkles, LogOut, Palette, ChevronRight } from "luc
 import { useOnboarding, useKidMode } from "../hooks/useKidMode";
 import { interestOptions } from "../lib/activities";
 import { trpc } from "@/providers/trpc";
-import { useAuth } from "@/hooks/useAuth";
+import { useAuth } from "../hooks/useAuth";
+import { useNavigate } from "react-router";
 
 export default function Profile() {
   const { childName, childAge, interests, setChildName, setChildAge, setInterests, setCompleted } = useOnboarding();
   const { isKidMode, toggle } = useKidMode();
   const { logout } = useAuth();
+  const navigate = useNavigate();
   const [showProModal, setShowProModal] = useState(false);
   const [isEditingProfile, setIsEditingProfile] = useState(false);
 
@@ -227,7 +229,6 @@ export default function Profile() {
           <button
             onClick={() => {
               logout();
-              setCompleted(false);
             }}
             className="w-full px-4 py-3 flex items-center gap-3 text-red-500"
           >

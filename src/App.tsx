@@ -1,12 +1,14 @@
 import { Routes, Route, useLocation, useNavigate } from "react-router";
 import { useEffect } from "react";
-import { useOnboarding } from "./hooks/useKidMode";
-import Onboarding from "./pages/Onboarding";
-import Explore from "./pages/Explore";
-import Plans from "./pages/Plans";
-import Saved from "./pages/Saved";
-import Profile from "./pages/Profile";
-import BottomNav from "./components/BottomNav";
+import { useOnboarding } from "../hooks/useKidMode";
+import Home from "../pages/Home";
+import Onboarding from "../pages/Onboarding";
+import Explore from "../pages/Explore";
+import Plans from "../pages/Plans";
+import Saved from "../pages/Saved";
+import Profile from "../pages/Profile";
+import Login from "../pages/Login";
+import BottomNav from "./Components/BottomNav";
 
 export default function App() {
   const location = useLocation();
@@ -14,7 +16,7 @@ export default function App() {
   const hasCompletedOnboarding = useOnboarding((s) => s.hasCompletedOnboarding);
 
   useEffect(() => {
-    if (!hasCompletedOnboarding && location.pathname !== "/onboarding") {
+    if (!hasCompletedOnboarding && location.pathname !== "/onboarding" && location.pathname !== "/login") {
       navigate("/onboarding", { replace: true });
     }
   }, [hasCompletedOnboarding, location.pathname, navigate]);
@@ -27,12 +29,14 @@ export default function App() {
         <div className="h-screen flex flex-col overflow-hidden">
           <div className="flex-1 overflow-y-auto overflow-x-hidden">
             <Routes>
+              <Route path="/login" element={<Login />} />
               <Route path="/onboarding" element={<Onboarding />} />
-              <Route path="/" element={<Explore />} />
+              <Route path="/" element={<Home />} />
+              <Route path="/explore" element={<Explore />} />
               <Route path="/plans" element={<Plans />} />
               <Route path="/saved" element={<Saved />} />
               <Route path="/profile" element={<Profile />} />
-              <Route path="*" element={<Explore />} />
+              <Route path="*" element={<Home />} />
             </Routes>
           </div>
           {showNav && <BottomNav />}
