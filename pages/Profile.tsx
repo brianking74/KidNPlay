@@ -110,7 +110,7 @@ export default function Profile() {
                   Interests
                 </label>
                 <div className="flex flex-wrap gap-2">
-                  {interestOptions.slice(0, 4).map((opt) => {
+                  {interestOptions.map((opt) => {
                     const selected = editInterests.includes(opt.id);
                     return (
                       <button
